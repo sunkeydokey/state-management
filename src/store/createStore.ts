@@ -22,15 +22,11 @@ export const createStore = <T>(initialState: T): Store<T> => {
   };
 
   const subscribe = (callback: () => void) => {
-    console.log('subscribe');
     callbacks.add(callback);
     return () => {
-      console.log('delete callback');
       callbacks.delete(callback);
     };
   };
 
   return { getState, setState, subscribe };
 };
-
-export const store = createStore({ count: 1 });

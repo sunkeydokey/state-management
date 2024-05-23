@@ -1,21 +1,31 @@
 import './App.css';
-import { store } from './store/moduleStore';
-import { useStore } from './store/useStore';
+import { CountController } from './components/CountController';
+import { CountViewer } from './components/CountViewer';
+import { countStore } from './store/countStore';
+import { useStore } from './store/hooks/useStore';
 
 function App() {
-  const [state, setState] = useStore(store);
+  const [state, setState] = useStore(countStore);
   const increase = () => {
     setState((prev) => ({
       ...prev,
       count: prev.count + 1,
     }));
   };
+  const reset = () => {
+    setState({ count: 0 });
+  };
   return (
     <>
       <div>
-        <button onClick={increase}></button>
+        <button onClick={increase}>+ 1</button>
       </div>
-      <p className="read-the-docs">{state.count}</p>
+      <div>
+        <button onClick={reset}>reset</button>
+      </div>
+      <CountController />
+      <p>{state.count}</p>
+      <CountViewer />
     </>
   );
 }

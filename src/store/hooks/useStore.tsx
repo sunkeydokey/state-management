@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react';
-import type { Store, Action } from './moduleStore';
+import type { Store, Action } from '../createStore';
+
 export const useStore = <T,>(
   store: Store<T>
 ): [T, (action: T | Action<T>) => void] => {

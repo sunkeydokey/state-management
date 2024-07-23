@@ -1,6 +1,6 @@
 import { ChangeEventHandler } from 'react';
-import { countStore } from '../store/countStore';
-import { useStore } from '../store/hooks/useStore';
+import { countStore } from '../../store/module-store/countStore';
+import { useStore } from '../../store/module-store/hooks/useStore';
 
 export const CountController = () => {
   const [state, setState] = useStore(countStore);
